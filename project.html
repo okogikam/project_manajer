@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects - Project Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f1f5f9;
+      color:#1e293b;
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* ======================
+       SIDEBAR
+    ====================== */
+
+    .sidebar{
+      width:260px;
+      background:#0f172a;
+      color:#fff;
+      padding:24px 18px;
+      position:fixed;
+      left:0;
+      top:0;
+      height:100vh;
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:700;
+      padding:12px 16px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      margin-bottom:20px;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#cbd5e1;
+      padding:14px 16px;
+      border-radius:14px;
+      transition:0.2s;
+      font-size:15px;
+      font-weight:500;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      background:#1e293b;
+      color:#fff;
+    }
+
+    /* ======================
+       MAIN
+    ====================== */
+
+    .main{
+      margin-left:260px;
+      flex:1;
+      padding:30px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:28px;
+    }
+
+    .topbar h1{
+      font-size:30px;
+      font-weight:700;
+    }
+
+    .btn{
+      background:#2563eb;
+      color:#fff;
+      border:none;
+      padding:12px 18px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+      transition:0.2s;
+    }
+
+    .btn:hover{
+      background:#1d4ed8;
+    }
+
+    /* ======================
+       PROJECT FORM
+    ====================== */
+
+    .project-form{
+      background:#fff;
+      padding:24px;
+      border-radius:20px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom:28px;
+    }
+
+    .project-form h2{
+      margin-bottom:20px;
+      font-size:20px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .form-group.full{
+      grid-column:1 / -1;
+    }
+
+    label{
+      margin-bottom:8px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    input,
+    textarea,
+    select{
+      border:1px solid #dbeafe;
+      background:#f8fafc;
+      padding:14px;
+      border-radius:12px;
+      font-size:14px;
+      font-family:'Inter',sans-serif;
+      outline:none;
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:120px;
+    }
+
+    /* ======================
+       PROJECT LIST
+    ====================== */
+
+    .project-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:20px;
+    }
+
+    .project-card{
+      background:#fff;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .project-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:14px;
+    }
+
+    .project-title{
+      font-size:18px;
+      font-weight:700;
+    }
+
+    .status{
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    .planning{
+      background:#dbeafe;
+      color:#1d4ed8;
+    }
+
+    .development{
+      background:#fef3c7;
+      color:#92400e;
+    }
+
+    .testing{
+      background:#ede9fe;
+      color:#6d28d9;
+    }
+
+    .done{
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    .project-desc{
+      font-size:14px;
+      color:#64748b;
+      line-height:1.6;
+      margin-bottom:18px;
+    }
+
+    .project-meta{
+      display:flex;
+      justify-content:space-between;
+      font-size:13px;
+      color:#64748b;
+      border-top:1px solid #e2e8f0;
+      padding-top:14px;
+    }
+
+    /* ======================
+       MOBILE
+    ====================== */
+
+    @media(max-width:660px){
+
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+      }
+
+      .main{
+        margin-left:0;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      Project Manager
+    </div>
+
+    <nav class="menu">
+      <a href="#">🏠 Dashboard</a>
+      <a href="#" class="active">📁 Projects</a>
+      <a href="#">✅ Tasks</a>
+      <a href="#">📄 Documents</a>
+      <a href="#">📊 Activity</a>
+      <a href="#">⚙️ Settings</a>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <h1>Projects</h1>
+
+      <button class="btn">
+        + Buat Proyek
+      </button>
+    </div>
+
+    <!-- FORM -->
+    <section class="project-form">
+
+      <h2>Tambah Proyek Baru</h2>
+
+      <form>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Nama Proyek</label>
+            <input type="text" placeholder="Masukkan nama proyek">
+          </div>
+
+          <div class="form-group">
+            <label>Status Proyek</label>
+
+            <select>
+              <option>Planning</option>
+              <option>Development</option>
+              <option>Testing</option>
+              <option>Selesai</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label>Deskripsi Proyek</label>
+
+            <textarea placeholder="Tulis deskripsi proyek..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Tanggal Mulai</label>
+            <input type="date">
+          </div>
+
+          <div class="form-group">
+            <label>Deadline</label>
+            <input type="date">
+          </div>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <!-- PROJECT LIST -->
+    <section class="project-list">
+
+      <!-- CARD -->
+      <div class="project-card">
+
+        <div class="project-header">
+          <div class="project-title">
+            Sistem Informasi Akademik
+          </div>
+
+          <span class="status development">
+            Development
+          </span>
+        </div>
+
+        <div class="project-desc">
+          Pengembangan sistem akademik berbasis web untuk pengelolaan data mahasiswa, dosen, dan jadwal kuliah.
+        </div>
+
+        <div class="project-meta">
+          <div>
+            Mulai: 01 Mei 2026
+          </div>
+
+          <div>
+            Deadline: 30 Mei 2026
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="project-card">
+
+        <div class="project-header">
+          <div class="project-title">
+            Mobile App Monitoring
+          </div>
+
+          <span class="status testing">
+            Testing
+          </span>
+        </div>
+
+        <div class="project-desc">
+          Aplikasi mobile untuk monitoring progres proyek dan manajemen task tim internal perusahaan.
+        </div>
+
+        <div class="project-meta">
+          <div>
+            Mulai: 12 April 2026
+          </div>
+
+          <div>
+            Deadline: 18 Mei 2026
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="project-card">
+
+        <div class="project-header">
+          <div class="project-title">
+            Website Company Profile
+          </div>
+
+          <span class="status planning">
+            Planning
+          </span>
+        </div>
+
+        <div class="project-desc">
+          Pembuatan website company profile modern untuk branding dan publikasi layanan perusahaan.
+        </div>
+
+        <div class="project-meta">
+          <div>
+            Mulai: 20 Mei 2026
+          </div>
+
+          <div>
+            Deadline: 15 Juni 2026
+          </div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="project-card">
+
+        <div class="project-header">
+          <div class="project-title">
+            Sistem Arsip Digital
+          </div>
+
+          <span class="status done">
+            Selesai
+          </span>
+        </div>
+
+        <div class="project-desc">
+          Sistem digitalisasi dokumen dan arsip internal perusahaan berbasis cloud storage.
+        </div>
+
+        <div class="project-meta">
+          <div>
+            Mulai: 10 Maret 2026
+          </div>
+
+          <div>
+            Deadline: 10 April 2026
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

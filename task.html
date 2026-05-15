@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tasks - Project Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f1f5f9;
+      color:#1e293b;
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar{
+      width:260px;
+      background:#0f172a;
+      color:white;
+      padding:24px 18px;
+      position:fixed;
+      left:0;
+      top:0;
+      height:100vh;
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:700;
+      padding:12px 16px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      margin-bottom:20px;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#cbd5e1;
+      padding:14px 16px;
+      border-radius:14px;
+      transition:0.2s;
+      font-size:15px;
+      font-weight:500;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      background:#1e293b;
+      color:#fff;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main{
+      margin-left:260px;
+      flex:1;
+      padding:30px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:28px;
+    }
+
+    .topbar h1{
+      font-size:30px;
+      font-weight:700;
+    }
+
+    .btn{
+      background:#2563eb;
+      color:white;
+      border:none;
+      padding:12px 18px;
+      border-radius:12px;
+      font-size:14px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.2s;
+    }
+
+    .btn:hover{
+      background:#1d4ed8;
+    }
+
+    /* =========================
+       FORM
+    ========================= */
+
+    .task-form{
+      background:white;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom:30px;
+    }
+
+    .task-form h2{
+      margin-bottom:20px;
+      font-size:20px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .form-group.full{
+      grid-column:1 / -1;
+    }
+
+    label{
+      margin-bottom:8px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    input,
+    textarea,
+    select{
+      padding:14px;
+      border-radius:12px;
+      border:1px solid #dbeafe;
+      background:#f8fafc;
+      font-size:14px;
+      font-family:'Inter',sans-serif;
+      outline:none;
+    }
+
+    textarea{
+      resize:vertical;
+      min-height:120px;
+    }
+
+    .checklist{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      margin-top:6px;
+    }
+
+    .checklist label{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:500;
+      margin:0;
+    }
+
+    input[type="checkbox"]{
+      width:16px;
+      height:16px;
+    }
+
+    /* =========================
+       TASK LIST
+    ========================= */
+
+    .task-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+      gap:20px;
+    }
+
+    .task-card{
+      background:white;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .task-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      margin-bottom:16px;
+      gap:12px;
+    }
+
+    .task-title{
+      font-size:18px;
+      font-weight:700;
+      margin-bottom:6px;
+    }
+
+    .task-member{
+      font-size:13px;
+      color:#64748b;
+    }
+
+    .task-desc{
+      font-size:14px;
+      color:#64748b;
+      line-height:1.7;
+      margin-bottom:18px;
+    }
+
+    .task-meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-bottom:18px;
+    }
+
+    .badge{
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    /* STATUS */
+
+    .todo{
+      background:#dbeafe;
+      color:#1d4ed8;
+    }
+
+    .progress{
+      background:#fef3c7;
+      color:#92400e;
+    }
+
+    .review{
+      background:#ede9fe;
+      color:#6d28d9;
+    }
+
+    .done{
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    /* PRIORITY */
+
+    .high{
+      background:#fee2e2;
+      color:#b91c1c;
+    }
+
+    .medium{
+      background:#fef3c7;
+      color:#92400e;
+    }
+
+    .low{
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    .task-footer{
+      border-top:1px solid #e2e8f0;
+      padding-top:14px;
+      display:flex;
+      justify-content:space-between;
+      font-size:13px;
+      color:#64748b;
+    }
+
+    .mini-checklist{
+      margin-top:10px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .mini-checklist div{
+      font-size:13px;
+      color:#475569;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:660px){
+
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+      }
+
+      .main{
+        margin-left:0;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      Project Manager
+    </div>
+
+    <nav class="menu">
+      <a href="#">🏠 Dashboard</a>
+      <a href="#">📁 Projects</a>
+      <a href="#" class="active">✅ Tasks</a>
+      <a href="#">📄 Documents</a>
+      <a href="#">📊 Activity</a>
+      <a href="#">⚙️ Settings</a>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <h1>Tasks</h1>
+
+      <button class="btn">
+        + Tambah Task
+      </button>
+    </div>
+
+    <!-- FORM -->
+    <section class="task-form">
+
+      <h2>Buat Task Baru</h2>
+
+      <form>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Judul Task</label>
+            <input type="text" placeholder="Masukkan judul task">
+          </div>
+
+          <div class="form-group">
+            <label>Assign Ke</label>
+
+            <select>
+              <option>Andi</option>
+              <option>Budi</option>
+              <option>Citra</option>
+              <option>Dina</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label>Deskripsi Task</label>
+
+            <textarea placeholder="Tulis detail pekerjaan..."></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Status</label>
+
+            <select>
+              <option>Todo</option>
+              <option>Progress</option>
+              <option>Review</option>
+              <option>Done</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Prioritas</label>
+
+            <select>
+              <option>High</option>
+              <option>Medium</option>
+              <option>Low</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Deadline</label>
+            <input type="date">
+          </div>
+
+          <div class="form-group">
+            <label>Upload File</label>
+            <input type="file">
+          </div>
+
+          <div class="form-group full">
+
+            <label>Checklist Kecil</label>
+
+            <div class="checklist">
+              <label><input type="checkbox"> Desain selesai</label>
+              <label><input type="checkbox"> API selesai</label>
+              <label><input type="checkbox"> Testing selesai</label>
+            </div>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <!-- TASK LIST -->
+    <section class="task-list">
+
+      <!-- CARD -->
+      <div class="task-card">
+
+        <div class="task-header">
+
+          <div>
+            <div class="task-title">
+              Desain Dashboard Admin
+            </div>
+
+            <div class="task-member">
+              Assign ke: Citra
+            </div>
+          </div>
+
+          <span class="badge progress">
+            Progress
+          </span>
+
+        </div>
+
+        <div class="task-desc">
+          Membuat desain UI dashboard admin untuk monitoring proyek dan task management.
+        </div>
+
+        <div class="task-meta">
+          <span class="badge high">High Priority</span>
+          <span class="badge review">UI Design</span>
+        </div>
+
+        <div class="mini-checklist">
+          <div>✅ Wireframe selesai</div>
+          <div>✅ Color palette selesai</div>
+          <div>⬜ Responsive mobile</div>
+        </div>
+
+        <div class="task-footer">
+          <div>Deadline: 20 Mei 2026</div>
+          <div>2 file upload</div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="task-card">
+
+        <div class="task-header">
+
+          <div>
+            <div class="task-title">
+              Integrasi REST API
+            </div>
+
+            <div class="task-member">
+              Assign ke: Andi
+            </div>
+          </div>
+
+          <span class="badge review">
+            Review
+          </span>
+
+        </div>
+
+        <div class="task-desc">
+          Integrasi backend REST API untuk autentikasi dan data proyek.
+        </div>
+
+        <div class="task-meta">
+          <span class="badge medium">Medium Priority</span>
+          <span class="badge todo">Backend</span>
+        </div>
+
+        <div class="mini-checklist">
+          <div>✅ Login API</div>
+          <div>✅ CRUD Project</div>
+          <div>⬜ Dokumentasi API</div>
+        </div>
+
+        <div class="task-footer">
+          <div>Deadline: 18 Mei 2026</div>
+          <div>1 file upload</div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="task-card">
+
+        <div class="task-header">
+
+          <div>
+            <div class="task-title">
+              Testing Mobile App
+            </div>
+
+            <div class="task-member">
+              Assign ke: Budi
+            </div>
+          </div>
+
+          <span class="badge todo">
+            Todo
+          </span>
+
+        </div>
+
+        <div class="task-desc">
+          Pengujian fitur mobile aplikasi pada Android dan iOS sebelum release production.
+        </div>
+
+        <div class="task-meta">
+          <span class="badge low">Low Priority</span>
+          <span class="badge done">QA Testing</span>
+        </div>
+
+        <div class="mini-checklist">
+          <div>⬜ Android testing</div>
+          <div>⬜ iOS testing</div>
+          <div>⬜ Bug fixing</div>
+        </div>
+
+        <div class="task-footer">
+          <div>Deadline: 25 Mei 2026</div>
+          <div>0 file upload</div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

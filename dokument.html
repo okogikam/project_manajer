@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Documents - Project Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f1f5f9;
+      color:#1e293b;
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar{
+      width:260px;
+      background:#0f172a;
+      color:#fff;
+      padding:24px 18px;
+      position:fixed;
+      left:0;
+      top:0;
+      height:100vh;
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:700;
+      padding:12px 16px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      margin-bottom:20px;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#cbd5e1;
+      padding:14px 16px;
+      border-radius:14px;
+      transition:0.2s;
+      font-size:15px;
+      font-weight:500;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      background:#1e293b;
+      color:#fff;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main{
+      margin-left:260px;
+      flex:1;
+      padding:30px;
+    }
+
+    .topbar{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:28px;
+    }
+
+    .topbar h1{
+      font-size:30px;
+      font-weight:700;
+    }
+
+    .btn{
+      background:#2563eb;
+      color:#fff;
+      border:none;
+      padding:12px 18px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+      transition:0.2s;
+    }
+
+    .btn:hover{
+      background:#1d4ed8;
+    }
+
+    /* =========================
+       DOCUMENT FORM
+    ========================= */
+
+    .document-form{
+      background:#fff;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+      margin-bottom:30px;
+    }
+
+    .document-form h2{
+      margin-bottom:20px;
+      font-size:20px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+    }
+
+    .form-group.full{
+      grid-column:1 / -1;
+    }
+
+    label{
+      margin-bottom:8px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    input,
+    select,
+    textarea{
+      border:1px solid #dbeafe;
+      background:#f8fafc;
+      border-radius:12px;
+      padding:14px;
+      font-size:14px;
+      font-family:'Inter',sans-serif;
+      outline:none;
+    }
+
+    textarea{
+      min-height:220px;
+      resize:vertical;
+      line-height:1.7;
+    }
+
+    .editor-toolbar{
+      display:flex;
+      gap:10px;
+      margin-bottom:12px;
+      flex-wrap:wrap;
+    }
+
+    .editor-toolbar button{
+      border:none;
+      background:#e2e8f0;
+      padding:8px 12px;
+      border-radius:10px;
+      cursor:pointer;
+      font-size:13px;
+      font-weight:600;
+    }
+
+    /* =========================
+       DOCUMENT LIST
+    ========================= */
+
+    .document-list{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+      gap:20px;
+    }
+
+    .document-card{
+      background:#fff;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .document-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:14px;
+    }
+
+    .document-title{
+      font-size:18px;
+      font-weight:700;
+    }
+
+    .category{
+      padding:6px 12px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:600;
+      white-space:nowrap;
+    }
+
+    .meeting{
+      background:#dbeafe;
+      color:#1d4ed8;
+    }
+
+    .requirement{
+      background:#fef3c7;
+      color:#92400e;
+    }
+
+    .tutorial{
+      background:#dcfce7;
+      color:#166534;
+    }
+
+    .credential{
+      background:#ede9fe;
+      color:#6d28d9;
+    }
+
+    .links{
+      background:#fee2e2;
+      color:#b91c1c;
+    }
+
+    .document-content{
+      font-size:14px;
+      line-height:1.8;
+      color:#475569;
+      margin-bottom:18px;
+    }
+
+    .markdown{
+      background:#f8fafc;
+      padding:12px;
+      border-radius:12px;
+      margin-top:10px;
+      font-family:monospace;
+      font-size:13px;
+      white-space:pre-line;
+      line-height:1.7;
+    }
+
+    .document-footer{
+      border-top:1px solid #e2e8f0;
+      padding-top:14px;
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      font-size:13px;
+      color:#64748b;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:660px){
+
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+      }
+
+      .main{
+        margin-left:0;
+      }
+
+      .form-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      Project Manager
+    </div>
+
+    <nav class="menu">
+      <a href="#">🏠 Dashboard</a>
+      <a href="#">📁 Projects</a>
+      <a href="#">✅ Tasks</a>
+      <a href="#" class="active">📄 Documents</a>
+      <a href="#">📊 Activity</a>
+      <a href="#">⚙️ Settings</a>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+
+      <h1>Documents</h1>
+
+      <button class="btn">
+        + Tambah Dokumen
+      </button>
+
+    </div>
+
+    <!-- FORM -->
+    <section class="document-form">
+
+      <h2>Buat Dokumen Baru</h2>
+
+      <form>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+            <label>Judul Dokumen</label>
+
+            <input type="text" placeholder="Masukkan judul dokumen">
+          </div>
+
+          <div class="form-group">
+
+            <label>Kategori</label>
+
+            <select>
+              <option>Catatan Rapat</option>
+              <option>Requirement</option>
+              <option>Link Penting</option>
+              <option>Tutorial Internal</option>
+              <option>Kredensial Non-Sensitif</option>
+            </select>
+
+          </div>
+
+          <div class="form-group full">
+
+            <label>Isi Dokumen</label>
+
+            <div class="editor-toolbar">
+              <button type="button">Bold</button>
+              <button type="button">Italic</button>
+              <button type="button">Heading</button>
+              <button type="button">List</button>
+              <button type="button">Code</button>
+              <button type="button">Link</button>
+            </div>
+
+            <textarea placeholder="# Judul
+
+Tulis isi dokumen menggunakan markdown atau editor sederhana..."></textarea>
+
+          </div>
+
+        </div>
+
+      </form>
+
+    </section>
+
+    <!-- DOCUMENT LIST -->
+    <section class="document-list">
+
+      <!-- CARD -->
+      <div class="document-card">
+
+        <div class="document-header">
+
+          <div class="document-title">
+            Meeting Sprint Mingguan
+          </div>
+
+          <span class="category meeting">
+            Catatan Rapat
+          </span>
+
+        </div>
+
+        <div class="document-content">
+          Ringkasan hasil meeting sprint mingguan terkait progres backend dan revisi UI dashboard.
+        </div>
+
+        <div class="markdown">
+# Hasil Meeting
+
+- Deadline API diperpanjang
+- UI dashboard direvisi
+- Testing dimulai minggu depan
+        </div>
+
+        <div class="document-footer">
+          <div>12 Mei 2026</div>
+          <div>By Admin</div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="document-card">
+
+        <div class="document-header">
+
+          <div class="document-title">
+            Requirement Sistem Monitoring
+          </div>
+
+          <span class="category requirement">
+            Requirement
+          </span>
+
+        </div>
+
+        <div class="document-content">
+          Daftar kebutuhan utama aplikasi monitoring proyek berbasis web.
+        </div>
+
+        <div class="markdown">
+## Fitur Utama
+
+- Login multi user
+- Manajemen task
+- Upload dokumen
+- Tracking progres
+        </div>
+
+        <div class="document-footer">
+          <div>10 Mei 2026</div>
+          <div>By Project Manager</div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="document-card">
+
+        <div class="document-header">
+
+          <div class="document-title">
+            Tutorial Deploy VPS
+          </div>
+
+          <span class="category tutorial">
+            Tutorial Internal
+          </span>
+
+        </div>
+
+        <div class="document-content">
+          Dokumentasi internal untuk proses deployment aplikasi ke server VPS production.
+        </div>
+
+        <div class="markdown">
+git pull
+composer install
+php artisan migrate
+        </div>
+
+        <div class="document-footer">
+          <div>08 Mei 2026</div>
+          <div>By DevOps</div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="document-card">
+
+        <div class="document-header">
+
+          <div class="document-title">
+            Link Resource UI
+          </div>
+
+          <span class="category links">
+            Link Penting
+          </span>
+
+        </div>
+
+        <div class="document-content">
+          Kumpulan link resource desain dan referensi frontend project.
+        </div>
+
+        <div class="markdown">
+- https://dribbble.com
+- https://tailwindcss.com
+- https://ui.shadcn.com
+        </div>
+
+        <div class="document-footer">
+          <div>06 Mei 2026</div>
+          <div>By UI Designer</div>
+        </div>
+
+      </div>
+
+      <!-- CARD -->
+      <div class="document-card">
+
+        <div class="document-header">
+
+          <div class="document-title">
+            Akun Testing Internal
+          </div>
+
+          <span class="category credential">
+            Kredensial
+          </span>
+
+        </div>
+
+        <div class="document-content">
+          Data akun dummy untuk testing aplikasi internal development.
+        </div>
+
+        <div class="markdown">
+Email: testing@example.com
+Role: QA Tester
+Environment: Staging
+        </div>
+
+        <div class="document-footer">
+          <div>05 Mei 2026</div>
+          <div>By Administrator</div>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

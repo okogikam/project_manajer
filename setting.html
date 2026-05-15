@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings - Project Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:'Inter',sans-serif;
+      background:#f1f5f9;
+      color:#1e293b;
+      display:flex;
+      min-height:100vh;
+    }
+
+    /* =========================
+       SIDEBAR
+    ========================= */
+
+    .sidebar{
+      width:260px;
+      background:#0f172a;
+      color:white;
+      padding:24px 18px;
+      position:fixed;
+      left:0;
+      top:0;
+      height:100vh;
+    }
+
+    .logo{
+      font-size:24px;
+      font-weight:700;
+      padding:12px 16px;
+      border-bottom:1px solid rgba(255,255,255,0.1);
+      margin-bottom:20px;
+    }
+
+    .menu{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .menu a{
+      text-decoration:none;
+      color:#cbd5e1;
+      padding:14px 16px;
+      border-radius:14px;
+      transition:0.2s;
+      font-size:15px;
+      font-weight:500;
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .menu a:hover,
+    .menu a.active{
+      background:#1e293b;
+      color:#fff;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    .main{
+      margin-left:260px;
+      flex:1;
+      padding:30px;
+    }
+
+    .topbar{
+      margin-bottom:28px;
+    }
+
+    .topbar h1{
+      font-size:30px;
+      font-weight:700;
+    }
+
+    /* =========================
+       SETTINGS GRID
+    ========================= */
+
+    .settings-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:24px;
+    }
+
+    .settings-card{
+      background:white;
+      border-radius:20px;
+      padding:24px;
+      box-shadow:0 4px 14px rgba(0,0,0,0.05);
+    }
+
+    .settings-card h2{
+      font-size:20px;
+      margin-bottom:20px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+      margin-bottom:18px;
+    }
+
+    .form-group label{
+      margin-bottom:8px;
+      font-size:14px;
+      font-weight:600;
+    }
+
+    input,
+    select,
+    textarea{
+      border:1px solid #dbeafe;
+      background:#f8fafc;
+      border-radius:12px;
+      padding:14px;
+      font-size:14px;
+      font-family:'Inter',sans-serif;
+      outline:none;
+    }
+
+    textarea{
+      min-height:100px;
+      resize:vertical;
+    }
+
+    /* =========================
+       TOGGLE
+    ========================= */
+
+    .toggle-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px 0;
+      border-bottom:1px solid #e2e8f0;
+    }
+
+    .toggle-row:last-child{
+      border-bottom:none;
+    }
+
+    .toggle-label{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .toggle-label span{
+      font-size:13px;
+      color:#64748b;
+    }
+
+    .switch{
+      position:relative;
+      width:50px;
+      height:26px;
+    }
+
+    .switch input{
+      opacity:0;
+      width:0;
+      height:0;
+    }
+
+    .slider{
+      position:absolute;
+      cursor:pointer;
+      top:0;
+      left:0;
+      right:0;
+      bottom:0;
+      background:#cbd5e1;
+      border-radius:999px;
+      transition:.3s;
+    }
+
+    .slider:before{
+      position:absolute;
+      content:'';
+      height:20px;
+      width:20px;
+      left:3px;
+      top:3px;
+      background:white;
+      border-radius:50%;
+      transition:.3s;
+    }
+
+    input:checked + .slider{
+      background:#2563eb;
+    }
+
+    input:checked + .slider:before{
+      transform:translateX(24px);
+    }
+
+    /* =========================
+       BUTTONS
+    ========================= */
+
+    .btn{
+      background:#2563eb;
+      color:white;
+      border:none;
+      padding:12px 18px;
+      border-radius:12px;
+      cursor:pointer;
+      font-size:14px;
+      font-weight:600;
+      transition:0.2s;
+    }
+
+    .btn:hover{
+      background:#1d4ed8;
+    }
+
+    .btn-danger{
+      background:#dc2626;
+    }
+
+    .btn-danger:hover{
+      background:#b91c1c;
+    }
+
+    .button-group{
+      display:flex;
+      gap:12px;
+      margin-top:20px;
+      flex-wrap:wrap;
+    }
+
+    /* =========================
+       TEAM LIST
+    ========================= */
+
+    .team-list{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .team-item{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:14px;
+      background:#f8fafc;
+      border-radius:14px;
+    }
+
+    .team-user{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+
+    .team-user small{
+      color:#64748b;
+      font-size:12px;
+    }
+
+    .role{
+      padding:6px 12px;
+      border-radius:999px;
+      background:#dbeafe;
+      color:#1d4ed8;
+      font-size:12px;
+      font-weight:600;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:900px){
+
+      body{
+        flex-direction:column;
+      }
+
+      .sidebar{
+        position:relative;
+        width:100%;
+        height:auto;
+      }
+
+      .main{
+        margin-left:0;
+      }
+
+      .settings-grid{
+        grid-template-columns:1fr;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      Project Manager
+    </div>
+
+    <nav class="menu">
+      <a href="#">🏠 Dashboard</a>
+      <a href="#">📁 Projects</a>
+      <a href="#">✅ Tasks</a>
+      <a href="#">📄 Documents</a>
+      <a href="#">📊 Activity</a>
+      <a href="#" class="active">⚙️ Settings</a>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- TOPBAR -->
+    <div class="topbar">
+      <h1>Settings</h1>
+    </div>
+
+    <!-- SETTINGS GRID -->
+    <section class="settings-grid">
+
+      <!-- GENERAL -->
+      <div class="settings-card">
+
+        <h2>General Settings</h2>
+
+        <div class="form-group">
+          <label>Nama Workspace</label>
+          <input type="text" value="Project Management Team">
+        </div>
+
+        <div class="form-group">
+          <label>Deskripsi Workspace</label>
+
+          <textarea>
+Workspace untuk monitoring proyek, task, dokumentasi, dan aktivitas tim internal.
+          </textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Timezone</label>
+
+          <select>
+            <option>Asia/Jakarta</option>
+            <option>Asia/Makassar</option>
+            <option>Asia/Jayapura</option>
+          </select>
+        </div>
+
+        <div class="button-group">
+          <button class="btn">
+            Simpan Perubahan
+          </button>
+        </div>
+
+      </div>
+
+      <!-- NOTIFICATION -->
+      <div class="settings-card">
+
+        <h2>Notification Settings</h2>
+
+        <div class="toggle-row">
+
+          <div class="toggle-label">
+            <strong>Email Notification</strong>
+            <span>Kirim notifikasi aktivitas ke email</span>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+
+        </div>
+
+        <div class="toggle-row">
+
+          <div class="toggle-label">
+            <strong>Task Reminder</strong>
+            <span>Reminder deadline task otomatis</span>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+
+        </div>
+
+        <div class="toggle-row">
+
+          <div class="toggle-label">
+            <strong>Activity Log</strong>
+            <span>Simpan semua aktivitas pengguna</span>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox" checked>
+            <span class="slider"></span>
+          </label>
+
+        </div>
+
+        <div class="toggle-row">
+
+          <div class="toggle-label">
+            <strong>Dark Mode</strong>
+            <span>Aktifkan tampilan gelap</span>
+          </div>
+
+          <label class="switch">
+            <input type="checkbox">
+            <span class="slider"></span>
+          </label>
+
+        </div>
+
+      </div>
+
+      <!-- TEAM -->
+      <div class="settings-card">
+
+        <h2>Team Members</h2>
+
+        <div class="team-list">
+
+          <div class="team-item">
+
+            <div class="team-user">
+              <strong>Andi Saputra</strong>
+              <small>andi@example.com</small>
+            </div>
+
+            <span class="role">
+              Developer
+            </span>
+
+          </div>
+
+          <div class="team-item">
+
+            <div class="team-user">
+              <strong>Citra Dewi</strong>
+              <small>citra@example.com</small>
+            </div>
+
+            <span class="role">
+              UI Designer
+            </span>
+
+          </div>
+
+          <div class="team-item">
+
+            <div class="team-user">
+              <strong>Budi Santoso</strong>
+              <small>budi@example.com</small>
+            </div>
+
+            <span class="role">
+              QA Tester
+            </span>
+
+          </div>
+
+        </div>
+
+        <div class="button-group">
+
+          <button class="btn">
+            + Tambah Anggota
+          </button>
+
+        </div>
+
+      </div>
+
+      <!-- SECURITY -->
+      <div class="settings-card">
+
+        <h2>Security & System</h2>
+
+        <div class="form-group">
+          <label>Password Baru</label>
+          <input type="password" placeholder="Masukkan password baru">
+        </div>
+
+        <div class="form-group">
+          <label>Konfirmasi Password</label>
+          <input type="password" placeholder="Konfirmasi password">
+        </div>
+
+        <div class="form-group">
+          <label>Backup System</label>
+
+          <select>
+            <option>Daily Backup</option>
+            <option>Weekly Backup</option>
+            <option>Monthly Backup</option>
+          </select>
+        </div>
+
+        <div class="button-group">
+
+          <button class="btn">
+            Update Security
+          </button>
+
+          <button class="btn btn-danger">
+            Reset Workspace
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

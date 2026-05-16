@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Project Management</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../disk/css/main_style.css">
+  
+</head>
+<body>
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="logo">
+      <img src="../../disk/img/icon_panjang.png" alt="Project Manager Logo">
+    </div>
+
+    <nav class="menu">
+      <a href="../dashboard/" class="active">🏠 Dashboard</a>
+      <a href="../project/">📁 Projects</a>
+      <a href="../task/">✅ Tasks</a>
+      <a href="../dokument/">📄 Documents</a>
+      <a href="../activity/">📊 Activity</a>
+      <a href="../setting/">⚙️ Settings</a>
+    </nav>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <div class="topbar">
+      <h1>Dashboard</h1>
+
+      <div class="profile">
+        Admin Project
+      </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <section class="cards">
+
+      <div class="card">
+        <div class="card-title">Jumlah Proyek Aktif</div>
+        <div class="card-value">12</div>
+        <div class="card-sub">3 proyek baru bulan ini</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Task Selesai</div>
+        <div class="card-value">148</div>
+        <div class="card-sub">85% completion rate</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Task Belum Selesai</div>
+        <div class="card-value">26</div>
+        <div class="card-sub">Perlu tindak lanjut</div>
+      </div>
+
+      <div class="card">
+        <div class="card-title">Deadline Terdekat</div>
+        <div class="card-value">2 Hari</div>
+        <div class="card-sub">Website Company Profile</div>
+      </div>
+
+    </section>
+
+    <!-- CONTENT -->
+    <section class="content-grid">
+
+      <div class="panel">
+        <h2>Daftar Task</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Task</th>
+              <th>Project</th>
+              <th>Status</th>
+              <th>Deadline</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Desain Dashboard UI</td>
+              <td>ERP System</td>
+              <td><span class="status done">Selesai</span></td>
+              <td>14 Mei 2026</td>
+            </tr>
+
+            <tr>
+              <td>Integrasi API Payment</td>
+              <td>E-Commerce</td>
+              <td><span class="status progress">Progress</span></td>
+              <td>18 Mei 2026</td>
+            </tr>
+
+            <tr>
+              <td>Testing Mobile App</td>
+              <td>Mobile Apps</td>
+              <td><span class="status pending">Pending</span></td>
+              <td>20 Mei 2026</td>
+            </tr>
+
+            <tr>
+              <td>Upload Dokumentasi</td>
+              <td>Internal System</td>
+              <td><span class="status progress">Progress</span></td>
+              <td>22 Mei 2026</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ACTIVITY -->
+      <div class="panel">
+        <h2>Aktivitas Terbaru</h2>
+
+        <div class="activity-list">
+
+          <div class="activity-item">
+            <div class="activity-title">Budi menambahkan task baru</div>
+            <div class="activity-time">10 menit lalu</div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-title">Revisi desain dashboard selesai</div>
+            <div class="activity-time">35 menit lalu</div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-title">Upload dokumen requirement</div>
+            <div class="activity-time">1 jam lalu</div>
+          </div>
+
+          <div class="activity-item">
+            <div class="activity-title">Project E-Commerce diperbarui</div>
+            <div class="activity-time">3 jam lalu</div>
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+</body>
+</html>

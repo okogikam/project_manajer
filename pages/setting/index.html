@@ -1,248 +1,210 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Settings - Project Management</title>
+<!-- MAIN -->
+<main class="main">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <h1>Settings</h1>
+  </div>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../../disk/css/main_style.css">
+  <!-- SETTINGS GRID -->
+  <section class="settings-grid">
 
-</head>
-<body>
+    <!-- GENERAL -->
+    <div class="settings-card">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+      <h2>General Settings</h2>
 
-   
-    <div class="logo">
-      <img src="../../disk/img/icon_panjang.png" alt="Project Manager Logo">
-    </div>
+      <div class="form-group">
+        <label>Nama Workspace</label>
+        <input type="text" value="Project Management Team">
+      </div>
 
-    <nav class="menu">
-      <a href="../dashboard/" >🏠 Dashboard</a>
-      <a href="../project/" >📁 Projects</a>
-      <a href="../task/" >✅ Tasks</a>
-      <a href="../dokument/" >📄 Documents</a>
-      <a href="../activity/" >📊 Activity</a>
-      <a href="../setting/" class="active">⚙️ Settings</a>
-    </nav>
+      <div class="form-group">
+        <label>Deskripsi Workspace</label>
 
-  </aside>
-
-  <!-- MAIN -->
-  <main class="main">
-
-    <!-- TOPBAR -->
-    <div class="topbar">
-      <h1>Settings</h1>
-    </div>
-
-    <!-- SETTINGS GRID -->
-    <section class="settings-grid">
-
-      <!-- GENERAL -->
-      <div class="settings-card">
-
-        <h2>General Settings</h2>
-
-        <div class="form-group">
-          <label>Nama Workspace</label>
-          <input type="text" value="Project Management Team">
-        </div>
-
-        <div class="form-group">
-          <label>Deskripsi Workspace</label>
-
-          <textarea>
+        <textarea>
 Workspace untuk monitoring proyek, task, dokumentasi, dan aktivitas tim internal.
-          </textarea>
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Timezone</label>
+
+        <select>
+          <option>Asia/Jakarta</option>
+          <option>Asia/Makassar</option>
+          <option>Asia/Jayapura</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+        <button class="btn">
+          Simpan Perubahan
+        </button>
+      </div>
+
+    </div>
+
+    <!-- NOTIFICATION -->
+    <div class="settings-card">
+
+      <h2>Notification Settings</h2>
+
+      <div class="toggle-row">
+
+        <div class="toggle-label">
+          <strong>Email Notification</strong>
+          <span>Kirim notifikasi aktivitas ke email</span>
         </div>
 
-        <div class="form-group">
-          <label>Timezone</label>
-
-          <select>
-            <option>Asia/Jakarta</option>
-            <option>Asia/Makassar</option>
-            <option>Asia/Jayapura</option>
-          </select>
-        </div>
-
-        <div class="button-group">
-          <button class="btn">
-            Simpan Perubahan
-          </button>
-        </div>
+        <label class="switch">
+          <input type="checkbox" checked>
+          <span class="slider"></span>
+        </label>
 
       </div>
 
-      <!-- NOTIFICATION -->
-      <div class="settings-card">
+      <div class="toggle-row">
 
-        <h2>Notification Settings</h2>
-
-        <div class="toggle-row">
-
-          <div class="toggle-label">
-            <strong>Email Notification</strong>
-            <span>Kirim notifikasi aktivitas ke email</span>
-          </div>
-
-          <label class="switch">
-            <input type="checkbox" checked>
-            <span class="slider"></span>
-          </label>
-
+        <div class="toggle-label">
+          <strong>Task Reminder</strong>
+          <span>Reminder deadline task otomatis</span>
         </div>
 
-        <div class="toggle-row">
-
-          <div class="toggle-label">
-            <strong>Task Reminder</strong>
-            <span>Reminder deadline task otomatis</span>
-          </div>
-
-          <label class="switch">
-            <input type="checkbox" checked>
-            <span class="slider"></span>
-          </label>
-
-        </div>
-
-        <div class="toggle-row">
-
-          <div class="toggle-label">
-            <strong>Activity Log</strong>
-            <span>Simpan semua aktivitas pengguna</span>
-          </div>
-
-          <label class="switch">
-            <input type="checkbox" checked>
-            <span class="slider"></span>
-          </label>
-
-        </div>
-
-        <div class="toggle-row">
-
-          <div class="toggle-label">
-            <strong>Dark Mode</strong>
-            <span>Aktifkan tampilan gelap</span>
-          </div>
-
-          <label class="switch">
-            <input type="checkbox">
-            <span class="slider"></span>
-          </label>
-
-        </div>
+        <label class="switch">
+          <input type="checkbox" checked>
+          <span class="slider"></span>
+        </label>
 
       </div>
 
-      <!-- TEAM -->
-      <div class="settings-card">
+      <div class="toggle-row">
 
-        <h2>Team Members</h2>
+        <div class="toggle-label">
+          <strong>Activity Log</strong>
+          <span>Simpan semua aktivitas pengguna</span>
+        </div>
 
-        <div class="team-list">
+        <label class="switch">
+          <input type="checkbox" checked>
+          <span class="slider"></span>
+        </label>
 
-          <div class="team-item">
+      </div>
 
-            <div class="team-user">
-              <strong>Andi Saputra</strong>
-              <small>andi@example.com</small>
-            </div>
+      <div class="toggle-row">
 
-            <span class="role">
-              Developer
-            </span>
+        <div class="toggle-label">
+          <strong>Dark Mode</strong>
+          <span>Aktifkan tampilan gelap</span>
+        </div>
 
+        <label class="switch">
+          <input type="checkbox">
+          <span class="slider"></span>
+        </label>
+
+      </div>
+
+    </div>
+
+    <!-- TEAM -->
+    <div class="settings-card">
+
+      <h2>Team Members</h2>
+
+      <div class="team-list">
+
+        <div class="team-item">
+
+          <div class="team-user">
+            <strong>Andi Saputra</strong>
+            <small>andi@example.com</small>
           </div>
 
-          <div class="team-item">
-
-            <div class="team-user">
-              <strong>Citra Dewi</strong>
-              <small>citra@example.com</small>
-            </div>
-
-            <span class="role">
-              UI Designer
-            </span>
-
-          </div>
-
-          <div class="team-item">
-
-            <div class="team-user">
-              <strong>Budi Santoso</strong>
-              <small>budi@example.com</small>
-            </div>
-
-            <span class="role">
-              QA Tester
-            </span>
-
-          </div>
+          <span class="role">
+            Developer
+          </span>
 
         </div>
 
-        <div class="button-group">
+        <div class="team-item">
 
-          <button class="btn">
-            + Tambah Anggota
-          </button>
+          <div class="team-user">
+            <strong>Citra Dewi</strong>
+            <small>citra@example.com</small>
+          </div>
+
+          <span class="role">
+            UI Designer
+          </span>
+
+        </div>
+
+        <div class="team-item">
+
+          <div class="team-user">
+            <strong>Budi Santoso</strong>
+            <small>budi@example.com</small>
+          </div>
+
+          <span class="role">
+            QA Tester
+          </span>
 
         </div>
 
       </div>
 
-      <!-- SECURITY -->
-      <div class="settings-card">
+      <div class="button-group">
 
-        <h2>Security & System</h2>
-
-        <div class="form-group">
-          <label>Password Baru</label>
-          <input type="password" placeholder="Masukkan password baru">
-        </div>
-
-        <div class="form-group">
-          <label>Konfirmasi Password</label>
-          <input type="password" placeholder="Konfirmasi password">
-        </div>
-
-        <div class="form-group">
-          <label>Backup System</label>
-
-          <select>
-            <option>Daily Backup</option>
-            <option>Weekly Backup</option>
-            <option>Monthly Backup</option>
-          </select>
-        </div>
-
-        <div class="button-group">
-
-          <button class="btn">
-            Update Security
-          </button>
-
-          <button class="btn btn-danger">
-            Reset Workspace
-          </button>
-
-        </div>
+        <button class="btn">
+          + Tambah Anggota
+        </button>
 
       </div>
 
-    </section>
+    </div>
 
-  </main>
+    <!-- SECURITY -->
+    <div class="settings-card">
 
-</body>
-</html>
+      <h2>Security & System</h2>
+
+      <div class="form-group">
+        <label>Password Baru</label>
+        <input type="password" placeholder="Masukkan password baru">
+      </div>
+
+      <div class="form-group">
+        <label>Konfirmasi Password</label>
+        <input type="password" placeholder="Konfirmasi password">
+      </div>
+
+      <div class="form-group">
+        <label>Backup System</label>
+
+        <select>
+          <option>Daily Backup</option>
+          <option>Weekly Backup</option>
+          <option>Monthly Backup</option>
+        </select>
+      </div>
+
+      <div class="button-group">
+
+        <button class="btn">
+          Update Security
+        </button>
+
+        <button class="btn btn-danger">
+          Reset Workspace
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>

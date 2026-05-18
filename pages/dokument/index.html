@@ -1,278 +1,239 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Documents - Project Management</title>
+<!-- MAIN -->
+<main class="main">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- TOPBAR -->
+  <div class="topbar">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../disk/css/main_style.css">   
+    <h1>Documents</h1>
 
+    <button class="btn">
+      + Tambah Dokumen
+    </button>
 
-</head>
-<body>
+  </div>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+  <!-- FORM -->
+  <section class="document-form">
 
-    
-    <div class="logo">
-      <img src="../../disk/img/icon_panjang.png" alt="Project Manager Logo">
-    </div>
+    <h2>Buat Dokumen Baru</h2>
 
-    <nav class="menu">
-      <a href="../dashboard/" >🏠 Dashboard</a>
-      <a href="../project/">📁 Projects</a>
-      <a href="../task/">✅ Tasks</a>
-      <a href="../dokument/" class="active">📄 Documents</a>
-      <a href="../activity/">📊 Activity</a>
-      <a href="../setting/">⚙️ Settings</a>
-    </nav>
+    <form>
 
-  </aside>
+      <div class="form-grid">
 
-  <!-- MAIN -->
-  <main class="main">
+        <div class="form-group">
+          <label>Judul Dokumen</label>
 
-    <!-- TOPBAR -->
-    <div class="topbar">
+          <input type="text" placeholder="Masukkan judul dokumen">
+        </div>
 
-      <h1>Documents</h1>
+        <div class="form-group">
 
-      <button class="btn">
-        + Tambah Dokumen
-      </button>
+          <label>Kategori</label>
 
-    </div>
+          <select>
+            <option>Catatan Rapat</option>
+            <option>Requirement</option>
+            <option>Link Penting</option>
+            <option>Tutorial Internal</option>
+            <option>Kredensial Non-Sensitif</option>
+          </select>
 
-    <!-- FORM -->
-    <section class="document-form">
+        </div>
 
-      <h2>Buat Dokumen Baru</h2>
+        <div class="form-group full">
 
-      <form>
+          <label>Isi Dokumen</label>
 
-        <div class="form-grid">
-
-          <div class="form-group">
-            <label>Judul Dokumen</label>
-
-            <input type="text" placeholder="Masukkan judul dokumen">
+          <div class="editor-toolbar">
+            <button type="button">Bold</button>
+            <button type="button">Italic</button>
+            <button type="button">Heading</button>
+            <button type="button">List</button>
+            <button type="button">Code</button>
+            <button type="button">Link</button>
           </div>
 
-          <div class="form-group">
-
-            <label>Kategori</label>
-
-            <select>
-              <option>Catatan Rapat</option>
-              <option>Requirement</option>
-              <option>Link Penting</option>
-              <option>Tutorial Internal</option>
-              <option>Kredensial Non-Sensitif</option>
-            </select>
-
-          </div>
-
-          <div class="form-group full">
-
-            <label>Isi Dokumen</label>
-
-            <div class="editor-toolbar">
-              <button type="button">Bold</button>
-              <button type="button">Italic</button>
-              <button type="button">Heading</button>
-              <button type="button">List</button>
-              <button type="button">Code</button>
-              <button type="button">Link</button>
-            </div>
-
-            <textarea placeholder="# Judul
+          <textarea placeholder="# Judul
 
 Tulis isi dokumen menggunakan markdown atau editor sederhana..."></textarea>
 
-          </div>
-
         </div>
 
-      </form>
+      </div>
 
-    </section>
+    </form>
 
-    <!-- DOCUMENT LIST -->
-    <section class="document-list">
+  </section>
 
-      <!-- CARD -->
-      <div class="document-card">
+  <!-- DOCUMENT LIST -->
+  <section class="document-list">
 
-        <div class="document-header">
+    <!-- CARD -->
+    <div class="document-card">
 
-          <div class="document-title">
-            Meeting Sprint Mingguan
-          </div>
+      <div class="document-header">
 
-          <span class="category meeting">
-            Catatan Rapat
-          </span>
-
+        <div class="document-title">
+          Meeting Sprint Mingguan
         </div>
 
-        <div class="document-content">
-          Ringkasan hasil meeting sprint mingguan terkait progres backend dan revisi UI dashboard.
-        </div>
+        <span class="category meeting">
+          Catatan Rapat
+        </span>
 
-        <div class="markdown">
+      </div>
+
+      <div class="document-content">
+        Ringkasan hasil meeting sprint mingguan terkait progres backend dan revisi UI dashboard.
+      </div>
+
+      <div class="markdown">
 # Hasil Meeting
 
 - Deadline API diperpanjang
 - UI dashboard direvisi
 - Testing dimulai minggu depan
+      </div>
+
+      <div class="document-footer">
+        <div>12 Mei 2026</div>
+        <div>By Admin</div>
+      </div>
+
+    </div>
+
+    <!-- CARD -->
+    <div class="document-card">
+
+      <div class="document-header">
+
+        <div class="document-title">
+          Requirement Sistem Monitoring
         </div>
 
-        <div class="document-footer">
-          <div>12 Mei 2026</div>
-          <div>By Admin</div>
-        </div>
+        <span class="category requirement">
+          Requirement
+        </span>
 
       </div>
 
-      <!-- CARD -->
-      <div class="document-card">
+      <div class="document-content">
+        Daftar kebutuhan utama aplikasi monitoring proyek berbasis web.
+      </div>
 
-        <div class="document-header">
-
-          <div class="document-title">
-            Requirement Sistem Monitoring
-          </div>
-
-          <span class="category requirement">
-            Requirement
-          </span>
-
-        </div>
-
-        <div class="document-content">
-          Daftar kebutuhan utama aplikasi monitoring proyek berbasis web.
-        </div>
-
-        <div class="markdown">
+      <div class="markdown">
 ## Fitur Utama
 
 - Login multi user
 - Manajemen task
 - Upload dokumen
 - Tracking progres
+      </div>
+
+      <div class="document-footer">
+        <div>10 Mei 2026</div>
+        <div>By Project Manager</div>
+      </div>
+
+    </div>
+
+    <!-- CARD -->
+    <div class="document-card">
+
+      <div class="document-header">
+
+        <div class="document-title">
+          Tutorial Deploy VPS
         </div>
 
-        <div class="document-footer">
-          <div>10 Mei 2026</div>
-          <div>By Project Manager</div>
-        </div>
+        <span class="category tutorial">
+          Tutorial Internal
+        </span>
 
       </div>
 
-      <!-- CARD -->
-      <div class="document-card">
+      <div class="document-content">
+        Dokumentasi internal untuk proses deployment aplikasi ke server VPS production.
+      </div>
 
-        <div class="document-header">
-
-          <div class="document-title">
-            Tutorial Deploy VPS
-          </div>
-
-          <span class="category tutorial">
-            Tutorial Internal
-          </span>
-
-        </div>
-
-        <div class="document-content">
-          Dokumentasi internal untuk proses deployment aplikasi ke server VPS production.
-        </div>
-
-        <div class="markdown">
+      <div class="markdown">
 git pull
 composer install
 php artisan migrate
+      </div>
+
+      <div class="document-footer">
+        <div>08 Mei 2026</div>
+        <div>By DevOps</div>
+      </div>
+
+    </div>
+
+    <!-- CARD -->
+    <div class="document-card">
+
+      <div class="document-header">
+
+        <div class="document-title">
+          Link Resource UI
         </div>
 
-        <div class="document-footer">
-          <div>08 Mei 2026</div>
-          <div>By DevOps</div>
-        </div>
+        <span class="category links">
+          Link Penting
+        </span>
 
       </div>
 
-      <!-- CARD -->
-      <div class="document-card">
+      <div class="document-content">
+        Kumpulan link resource desain dan referensi frontend project.
+      </div>
 
-        <div class="document-header">
-
-          <div class="document-title">
-            Link Resource UI
-          </div>
-
-          <span class="category links">
-            Link Penting
-          </span>
-
-        </div>
-
-        <div class="document-content">
-          Kumpulan link resource desain dan referensi frontend project.
-        </div>
-
-        <div class="markdown">
+      <div class="markdown">
 - https://dribbble.com
 - https://tailwindcss.com
 - https://ui.shadcn.com
+      </div>
+
+      <div class="document-footer">
+        <div>06 Mei 2026</div>
+        <div>By UI Designer</div>
+      </div>
+
+    </div>
+
+    <!-- CARD -->
+    <div class="document-card">
+
+      <div class="document-header">
+
+        <div class="document-title">
+          Akun Testing Internal
         </div>
 
-        <div class="document-footer">
-          <div>06 Mei 2026</div>
-          <div>By UI Designer</div>
-        </div>
+        <span class="category credential">
+          Kredensial
+        </span>
 
       </div>
 
-      <!-- CARD -->
-      <div class="document-card">
+      <div class="document-content">
+        Data akun dummy untuk testing aplikasi internal development.
+      </div>
 
-        <div class="document-header">
-
-          <div class="document-title">
-            Akun Testing Internal
-          </div>
-
-          <span class="category credential">
-            Kredensial
-          </span>
-
-        </div>
-
-        <div class="document-content">
-          Data akun dummy untuk testing aplikasi internal development.
-        </div>
-
-        <div class="markdown">
+      <div class="markdown">
 Email: testing@example.com
 Role: QA Tester
 Environment: Staging
-        </div>
-
-        <div class="document-footer">
-          <div>05 Mei 2026</div>
-          <div>By Administrator</div>
-        </div>
-
       </div>
 
-    </section>
+      <div class="document-footer">
+        <div>05 Mei 2026</div>
+        <div>By Administrator</div>
+      </div>
 
-  </main>
+    </div>
 
-</body>
-</html>
+  </section>
+
+</main>

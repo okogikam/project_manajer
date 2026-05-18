@@ -1,266 +1,228 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Activity Log - Project Management</title>
+<!-- MAIN -->
+<main class="main">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- TOPBAR -->
+  <div class="topbar">
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../disk/css/main_style.css">
-  
-</head>
-<body>
+    <h1>Activity Log</h1>
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+    <div class="topbar-right">
 
-    
-    <div class="logo">
-      <img src="../../disk/img/icon_panjang.png" alt="Project Manager Logo">
-    </div>
+      <input 
+        type="text" 
+        class="search"
+        placeholder="Cari aktivitas..."
+      >
 
-    <nav class="menu">
-      <a href="../dashboard/">🏠 Dashboard</a>
-      <a href="../project/">📁 Projects</a>
-      <a href="../task/">✅ Tasks</a>
-      <a href="../dokument/">📄 Documents</a>
-      <a href="../activity/" class="active">📊 Activity</a>
-      <a href="../setting/">⚙️ Settings</a>
-    </nav>
-
-  </aside>
-
-  <!-- MAIN -->
-  <main class="main">
-
-    <!-- TOPBAR -->
-    <div class="topbar">
-
-      <h1>Activity Log</h1>
-
-      <div class="topbar-right">
-
-        <input 
-          type="text" 
-          class="search"
-          placeholder="Cari aktivitas..."
-        >
-
-        <button class="btn">
-          Export Log
-        </button>
-
-      </div>
+      <button class="btn">
+        Export Log
+      </button>
 
     </div>
 
-    <!-- FILTER -->
-    <section class="filter-bar">
+  </div>
 
-      <select>
-        <option>Semua Aktivitas</option>
-        <option>Task Update</option>
-        <option>Upload File</option>
-        <option>Task Selesai</option>
-        <option>Komentar</option>
-      </select>
+  <!-- FILTER -->
+  <section class="filter-bar">
 
-      <select>
-        <option>Semua User</option>
-        <option>Andi</option>
-        <option>Budi</option>
-        <option>Citra</option>
-        <option>Dina</option>
-      </select>
+    <select>
+      <option>Semua Aktivitas</option>
+      <option>Task Update</option>
+      <option>Upload File</option>
+      <option>Task Selesai</option>
+      <option>Komentar</option>
+    </select>
 
-      <select>
-        <option>Hari Ini</option>
-        <option>7 Hari Terakhir</option>
-        <option>Bulan Ini</option>
-      </select>
+    <select>
+      <option>Semua User</option>
+      <option>Andi</option>
+      <option>Budi</option>
+      <option>Citra</option>
+      <option>Dina</option>
+    </select>
 
-    </section>
+    <select>
+      <option>Hari Ini</option>
+      <option>7 Hari Terakhir</option>
+      <option>Bulan Ini</option>
+    </select>
 
-    <!-- ACTIVITY -->
-    <section class="activity-wrapper">
+  </section>
 
-      <div class="timeline-date">
-        Hari Ini
+  <!-- ACTIVITY -->
+  <section class="activity-wrapper">
+
+    <div class="timeline-date">
+      Hari Ini
+    </div>
+
+    <!-- ACTIVITY ITEM -->
+    <div class="activity-card">
+
+      <div class="activity-icon task-update">
+        ✏️
       </div>
 
-      <!-- ACTIVITY ITEM -->
-      <div class="activity-card">
+      <div class="activity-content">
 
-        <div class="activity-icon task-update">
-          ✏️
+        <div class="activity-title">
+          Citra mengubah status task "Desain Dashboard Admin"
         </div>
 
-        <div class="activity-content">
-
-          <div class="activity-title">
-            Citra mengubah status task "Desain Dashboard Admin"
-          </div>
-
-          <div class="activity-desc">
-            Status task diubah dari <b>Todo</b> menjadi <b>Progress</b>.
-          </div>
-
-          <div class="activity-meta">
-            <span class="badge blue">Task Update</span>
-            <span>10 menit lalu</span>
-            <span>Project ERP System</span>
-          </div>
-
+        <div class="activity-desc">
+          Status task diubah dari <b>Todo</b> menjadi <b>Progress</b>.
         </div>
 
-      </div>
-
-      <!-- ACTIVITY ITEM -->
-      <div class="activity-card">
-
-        <div class="activity-icon file-upload">
-          📁
-        </div>
-
-        <div class="activity-content">
-
-          <div class="activity-title">
-            Andi upload file baru ke task "Integrasi REST API"
-          </div>
-
-          <div class="activity-desc">
-            File <b>api-documentation.pdf</b> berhasil diupload ke project backend.
-          </div>
-
-          <div class="activity-meta">
-            <span class="badge green">Upload File</span>
-            <span>35 menit lalu</span>
-            <span>2.4 MB</span>
-          </div>
-
+        <div class="activity-meta">
+          <span class="badge blue">Task Update</span>
+          <span>10 menit lalu</span>
+          <span>Project ERP System</span>
         </div>
 
       </div>
 
-      <!-- ACTIVITY ITEM -->
-      <div class="activity-card">
+    </div>
 
-        <div class="activity-icon task-done">
-          ✅
+    <!-- ACTIVITY ITEM -->
+    <div class="activity-card">
+
+      <div class="activity-icon file-upload">
+        📁
+      </div>
+
+      <div class="activity-content">
+
+        <div class="activity-title">
+          Andi upload file baru ke task "Integrasi REST API"
         </div>
 
-        <div class="activity-content">
+        <div class="activity-desc">
+          File <b>api-documentation.pdf</b> berhasil diupload ke project backend.
+        </div>
 
-          <div class="activity-title">
-            Budi menyelesaikan task "Testing Mobile App"
-          </div>
-
-          <div class="activity-desc">
-            Semua checklist task telah selesai dan task dipindahkan ke status <b>Done</b>.
-          </div>
-
-          <div class="activity-meta">
-            <span class="badge purple">Task Selesai</span>
-            <span>1 jam lalu</span>
-            <span>QA Testing</span>
-          </div>
-
+        <div class="activity-meta">
+          <span class="badge green">Upload File</span>
+          <span>35 menit lalu</span>
+          <span>2.4 MB</span>
         </div>
 
       </div>
 
-      <!-- ACTIVITY ITEM -->
-      <div class="activity-card">
+    </div>
 
-        <div class="activity-icon comment">
-          💬
+    <!-- ACTIVITY ITEM -->
+    <div class="activity-card">
+
+      <div class="activity-icon task-done">
+        ✅
+      </div>
+
+      <div class="activity-content">
+
+        <div class="activity-title">
+          Budi menyelesaikan task "Testing Mobile App"
         </div>
 
-        <div class="activity-content">
+        <div class="activity-desc">
+          Semua checklist task telah selesai dan task dipindahkan ke status <b>Done</b>.
+        </div>
 
-          <div class="activity-title">
-            Dina menambahkan komentar pada task "UI Landing Page"
-          </div>
-
-          <div class="activity-desc">
-            "Tolong revisi ukuran font pada bagian hero section agar lebih responsif."
-          </div>
-
-          <div class="activity-meta">
-            <span class="badge red">Komentar</span>
-            <span>2 jam lalu</span>
-            <span>Frontend Project</span>
-          </div>
-
+        <div class="activity-meta">
+          <span class="badge purple">Task Selesai</span>
+          <span>1 jam lalu</span>
+          <span>QA Testing</span>
         </div>
 
       </div>
 
-      <!-- TIMELINE -->
-      <div class="timeline-date">
-        Kemarin
+    </div>
+
+    <!-- ACTIVITY ITEM -->
+    <div class="activity-card">
+
+      <div class="activity-icon comment">
+        💬
       </div>
 
-      <!-- ACTIVITY ITEM -->
-      <div class="activity-card">
+      <div class="activity-content">
 
-        <div class="activity-icon file-upload">
-          📄
+        <div class="activity-title">
+          Dina menambahkan komentar pada task "UI Landing Page"
         </div>
 
-        <div class="activity-content">
+        <div class="activity-desc">
+          "Tolong revisi ukuran font pada bagian hero section agar lebih responsif."
+        </div>
 
-          <div class="activity-title">
-            Citra upload dokumen requirement project
-          </div>
-
-          <div class="activity-desc">
-            Dokumen requirement terbaru berhasil ditambahkan ke menu Documents.
-          </div>
-
-          <div class="activity-meta">
-            <span class="badge green">Upload Dokumen</span>
-            <span>14 Mei 2026</span>
-            <span>Requirement System</span>
-          </div>
-
+        <div class="activity-meta">
+          <span class="badge red">Komentar</span>
+          <span>2 jam lalu</span>
+          <span>Frontend Project</span>
         </div>
 
       </div>
 
-      <!-- ACTIVITY ITEM -->
-      <div class="activity-card">
+    </div>
 
-        <div class="activity-icon task-update">
-          🔄
+    <!-- TIMELINE -->
+    <div class="timeline-date">
+      Kemarin
+    </div>
+
+    <!-- ACTIVITY ITEM -->
+    <div class="activity-card">
+
+      <div class="activity-icon file-upload">
+        📄
+      </div>
+
+      <div class="activity-content">
+
+        <div class="activity-title">
+          Citra upload dokumen requirement project
         </div>
 
-        <div class="activity-content">
+        <div class="activity-desc">
+          Dokumen requirement terbaru berhasil ditambahkan ke menu Documents.
+        </div>
 
-          <div class="activity-title">
-            Admin memindahkan task "Database Migration"
-          </div>
-
-          <div class="activity-desc">
-            Status task diubah dari <b>Review</b> menjadi <b>Done</b>.
-          </div>
-
-          <div class="activity-meta">
-            <span class="badge blue">Status Changed</span>
-            <span>14 Mei 2026</span>
-            <span>Backend Team</span>
-          </div>
-
+        <div class="activity-meta">
+          <span class="badge green">Upload Dokumen</span>
+          <span>14 Mei 2026</span>
+          <span>Requirement System</span>
         </div>
 
       </div>
 
-    </section>
+    </div>
 
-  </main>
+    <!-- ACTIVITY ITEM -->
+    <div class="activity-card">
 
-</body>
-</html>
+      <div class="activity-icon task-update">
+        🔄
+      </div>
+
+      <div class="activity-content">
+
+        <div class="activity-title">
+          Admin memindahkan task "Database Migration"
+        </div>
+
+        <div class="activity-desc">
+          Status task diubah dari <b>Review</b> menjadi <b>Done</b>.
+        </div>
+
+        <div class="activity-meta">
+          <span class="badge blue">Status Changed</span>
+          <span>14 Mei 2026</span>
+          <span>Backend Team</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</main>

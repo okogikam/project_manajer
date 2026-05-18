@@ -1,219 +1,181 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects - Project Management</title>
+<!-- MAIN -->
+<main class="main">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../disk/css/main_style.css">
+  <!-- TOPBAR -->
+  <div class="topbar">
+    <h1>Projects</h1>
 
+    <button class="btn">
+      + Buat Proyek
+    </button>
+  </div>
 
-</head>
-<body>
+  <!-- FORM -->
+  <section class="project-form">
 
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
+    <h2>Tambah Proyek Baru</h2>
 
-    
-    <div class="logo">
-      <img src="../../disk/img/icon_panjang.png" alt="Project Manager Logo">
+    <form>
+
+      <div class="form-grid">
+
+        <div class="form-group">
+          <label>Nama Proyek</label>
+          <input type="text" placeholder="Masukkan nama proyek">
+        </div>
+
+        <div class="form-group">
+          <label>Status Proyek</label>
+
+          <select>
+            <option>Planning</option>
+            <option>Development</option>
+            <option>Testing</option>
+            <option>Selesai</option>
+          </select>
+        </div>
+
+        <div class="form-group full">
+          <label>Deskripsi Proyek</label>
+
+          <textarea placeholder="Tulis deskripsi proyek..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>Tanggal Mulai</label>
+          <input type="date">
+        </div>
+
+        <div class="form-group">
+          <label>Deadline</label>
+          <input type="date">
+        </div>
+
+      </div>
+
+    </form>
+
+  </section>
+
+  <!-- PROJECT LIST -->
+  <section class="project-list">
+
+    <!-- CARD -->
+    <div class="project-card">
+
+      <div class="project-header">
+        <div class="project-title">
+          Sistem Informasi Akademik
+        </div>
+
+        <span class="status development">
+          Development
+        </span>
+      </div>
+
+      <div class="project-desc">
+        Pengembangan sistem akademik berbasis web untuk pengelolaan data mahasiswa, dosen, dan jadwal kuliah.
+      </div>
+
+      <div class="project-meta">
+        <div>
+          Mulai: 01 Mei 2026
+        </div>
+
+        <div>
+          Deadline: 30 Mei 2026
+        </div>
+      </div>
+
     </div>
 
-   <nav class="menu">
-      <a href="../dashboard/" >🏠 Dashboard</a>
-      <a href="../project/" class="active">📁 Projects</a>
-      <a href="../task/">✅ Tasks</a>
-      <a href="../dokument/" >📄 Documents</a>
-      <a href="../activity/">📊 Activity</a>
-      <a href="../setting/">⚙️ Settings</a>
-    </nav>
+    <!-- CARD -->
+    <div class="project-card">
 
-  </aside>
+      <div class="project-header">
+        <div class="project-title">
+          Mobile App Monitoring
+        </div>
 
-  <!-- MAIN -->
-  <main class="main">
+        <span class="status testing">
+          Testing
+        </span>
+      </div>
 
-    <!-- TOPBAR -->
-    <div class="topbar">
-      <h1>Projects</h1>
+      <div class="project-desc">
+        Aplikasi mobile untuk monitoring progres proyek dan manajemen task tim internal perusahaan.
+      </div>
 
-      <button class="btn">
-        + Buat Proyek
-      </button>
+      <div class="project-meta">
+        <div>
+          Mulai: 12 April 2026
+        </div>
+
+        <div>
+          Deadline: 18 Mei 2026
+        </div>
+      </div>
+
     </div>
 
-    <!-- FORM -->
-    <section class="project-form">
+    <!-- CARD -->
+    <div class="project-card">
 
-      <h2>Tambah Proyek Baru</h2>
-
-      <form>
-
-        <div class="form-grid">
-
-          <div class="form-group">
-            <label>Nama Proyek</label>
-            <input type="text" placeholder="Masukkan nama proyek">
-          </div>
-
-          <div class="form-group">
-            <label>Status Proyek</label>
-
-            <select>
-              <option>Planning</option>
-              <option>Development</option>
-              <option>Testing</option>
-              <option>Selesai</option>
-            </select>
-          </div>
-
-          <div class="form-group full">
-            <label>Deskripsi Proyek</label>
-
-            <textarea placeholder="Tulis deskripsi proyek..."></textarea>
-          </div>
-
-          <div class="form-group">
-            <label>Tanggal Mulai</label>
-            <input type="date">
-          </div>
-
-          <div class="form-group">
-            <label>Deadline</label>
-            <input type="date">
-          </div>
-
+      <div class="project-header">
+        <div class="project-title">
+          Website Company Profile
         </div>
 
-      </form>
-
-    </section>
-
-    <!-- PROJECT LIST -->
-    <section class="project-list">
-
-      <!-- CARD -->
-      <div class="project-card">
-
-        <div class="project-header">
-          <div class="project-title">
-            Sistem Informasi Akademik
-          </div>
-
-          <span class="status development">
-            Development
-          </span>
-        </div>
-
-        <div class="project-desc">
-          Pengembangan sistem akademik berbasis web untuk pengelolaan data mahasiswa, dosen, dan jadwal kuliah.
-        </div>
-
-        <div class="project-meta">
-          <div>
-            Mulai: 01 Mei 2026
-          </div>
-
-          <div>
-            Deadline: 30 Mei 2026
-          </div>
-        </div>
-
+        <span class="status planning">
+          Planning
+        </span>
       </div>
 
-      <!-- CARD -->
-      <div class="project-card">
-
-        <div class="project-header">
-          <div class="project-title">
-            Mobile App Monitoring
-          </div>
-
-          <span class="status testing">
-            Testing
-          </span>
-        </div>
-
-        <div class="project-desc">
-          Aplikasi mobile untuk monitoring progres proyek dan manajemen task tim internal perusahaan.
-        </div>
-
-        <div class="project-meta">
-          <div>
-            Mulai: 12 April 2026
-          </div>
-
-          <div>
-            Deadline: 18 Mei 2026
-          </div>
-        </div>
-
+      <div class="project-desc">
+        Pembuatan website company profile modern untuk branding dan publikasi layanan perusahaan.
       </div>
 
-      <!-- CARD -->
-      <div class="project-card">
-
-        <div class="project-header">
-          <div class="project-title">
-            Website Company Profile
-          </div>
-
-          <span class="status planning">
-            Planning
-          </span>
+      <div class="project-meta">
+        <div>
+          Mulai: 20 Mei 2026
         </div>
 
-        <div class="project-desc">
-          Pembuatan website company profile modern untuk branding dan publikasi layanan perusahaan.
+        <div>
+          Deadline: 15 Juni 2026
         </div>
-
-        <div class="project-meta">
-          <div>
-            Mulai: 20 Mei 2026
-          </div>
-
-          <div>
-            Deadline: 15 Juni 2026
-          </div>
-        </div>
-
       </div>
 
-      <!-- CARD -->
-      <div class="project-card">
+    </div>
 
-        <div class="project-header">
-          <div class="project-title">
-            Sistem Arsip Digital
-          </div>
+    <!-- CARD -->
+    <div class="project-card">
 
-          <span class="status done">
-            Selesai
-          </span>
+      <div class="project-header">
+        <div class="project-title">
+          Sistem Arsip Digital
         </div>
 
-        <div class="project-desc">
-          Sistem digitalisasi dokumen dan arsip internal perusahaan berbasis cloud storage.
-        </div>
-
-        <div class="project-meta">
-          <div>
-            Mulai: 10 Maret 2026
-          </div>
-
-          <div>
-            Deadline: 10 April 2026
-          </div>
-        </div>
-
+        <span class="status done">
+          Selesai
+        </span>
       </div>
 
-    </section>
+      <div class="project-desc">
+        Sistem digitalisasi dokumen dan arsip internal perusahaan berbasis cloud storage.
+      </div>
 
-  </main>
+      <div class="project-meta">
+        <div>
+          Mulai: 10 Maret 2026
+        </div>
 
-</body>
-</html>
+        <div>
+          Deadline: 10 April 2026
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+</main>

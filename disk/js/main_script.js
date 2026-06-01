@@ -1,19 +1,8 @@
-async function loadPage(btnKlick,page) {
-    const content = document.getElementById('content');
-    let btnMenu = document.querySelectorAll('.menu button');
-    btnMenu.forEach(btn => btn.classList.remove('active'));
-    btnKlick.classList.add('active');
-    content.style.opacity = 0;
-
-    setTimeout(async () => {
-        const response = await fetch(`./pages/${page}/index.html`);
-        const html = await response.text();
-
-        content.innerHTML = html;
-        content.style.opacity = 1;
-    }, 200);
+class mainScript {
+    async getMetod(conf){
+        let response = await fetch(`https://script.google.com/macros/s/AKfycbx9xge5bw6ahjMWq-ZzNwarETFlKzEIsH2Xi0uye8ocC1mgno2AqvZY99tH14rcKkpH/exec?db=${conf.db}${conf.attr}`)
+        .then(res => res.json());
+        return response;
+    }
 }
 
-window.onload = () => {
-    loadPage(document.querySelectorAll('.menu button')[0], 'dashboard');
-}

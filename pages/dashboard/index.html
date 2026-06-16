@@ -16,22 +16,13 @@
     <div class="card" id="card-project">      
     </div>
 
-    <div class="card">
-      <div class="card-title">Task Selesai</div>
-      <div class="card-value">148</div>
-      <div class="card-sub">85% completion rate</div>
+    <div class="card" id="card-task-done">
     </div>
 
-    <div class="card">
-      <div class="card-title">Task Belum Selesai</div>
-      <div class="card-value">26</div>
-      <div class="card-sub">Perlu tindak lanjut</div>
+    <div class="card" id="card-task-notdone">
     </div>
 
-    <div class="card">
-      <div class="card-title">Deadline Terdekat</div>
-      <div class="card-value">2 Hari</div>
-      <div class="card-sub">Website Company Profile</div>
+    <div class="card" id="card-deadline">
     </div>
 
   </section>
@@ -52,34 +43,7 @@
           </tr>
         </thead>
 
-        <tbody>
-          <tr>
-            <td>Desain Dashboard UI</td>
-            <td>ERP System</td>
-            <td><span class="status done">Selesai</span></td>
-            <td>14 Mei 2026</td>
-          </tr>
-
-          <tr>
-            <td>Integrasi API Payment</td>
-            <td>E-Commerce</td>
-            <td><span class="status progress">Progress</span></td>
-            <td>18 Mei 2026</td>
-          </tr>
-
-          <tr>
-            <td>Testing Mobile App</td>
-            <td>Mobile Apps</td>
-            <td><span class="status pending">Pending</span></td>
-            <td>20 Mei 2026</td>
-          </tr>
-
-          <tr>
-            <td>Upload Dokumentasi</td>
-            <td>Internal System</td>
-            <td><span class="status progress">Progress</span></td>
-            <td>22 Mei 2026</td>
-          </tr>
+        <tbody id="dataTask">          
         </tbody>
       </table>
     </div>
@@ -88,28 +52,7 @@
     <div class="panel">
       <h2>Aktivitas Terbaru</h2>
 
-      <div class="activity-list">
-
-        <div class="activity-item">
-          <div class="activity-title">Budi menambahkan task baru</div>
-          <div class="activity-time">10 menit lalu</div>
-        </div>
-
-        <div class="activity-item">
-          <div class="activity-title">Revisi desain dashboard selesai</div>
-          <div class="activity-time">35 menit lalu</div>
-        </div>
-
-        <div class="activity-item">
-          <div class="activity-title">Upload dokumen requirement</div>
-          <div class="activity-time">1 jam lalu</div>
-        </div>
-
-        <div class="activity-item">
-          <div class="activity-title">Project E-Commerce diperbarui</div>
-          <div class="activity-time">3 jam lalu</div>
-        </div>
-
+      <div class="activity-list" id="logList">
       </div>
     </div>
 

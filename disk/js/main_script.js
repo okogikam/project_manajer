@@ -7,5 +7,13 @@ class mainScript {
         .then(res => res.json());
         return response;
     }
+    loading(){
+        let loading = this.el.querySelector(".loading");
+        loading.style.display = "flex";
+    }
+    loadDone(){
+        let loading = this.el.querySelector(".loading");
+        loading.style.display = "none";
+    }
 }
 

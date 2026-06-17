@@ -1,6 +1,9 @@
+// import MainScript from "../main_script.js";
+
 async function loadPage(btnKlick, page) {
     const content = document.getElementById("content");
     const btnMenu = document.querySelectorAll(".menu button");
+    // const mc = new MainScript();
 
     btnMenu.forEach(btn => btn.classList.remove("active"));
     btnKlick.classList.add("active");
@@ -15,7 +18,6 @@ async function loadPage(btnKlick, page) {
         content.style.opacity = 1;
 
         await loadScriptOnce(`./disk/js/${page}/${page}.js`);
-
         if (typeof window[`init${page}`] === "function") {
             window[`init${page}`]();
         }
@@ -23,9 +25,6 @@ async function loadPage(btnKlick, page) {
     }, 200);
 }
 
-window.onload = () => {
-    loadPage(document.querySelectorAll('.menu button')[0], 'dashboard');
-}
 
 function loadScriptOnce(src) {
     return new Promise((resolve, reject) => {

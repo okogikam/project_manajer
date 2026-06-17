@@ -3,10 +3,24 @@ class dashboard extends mainScript {
         super();
     }
     async LoadData(){
-        this.project = await super.getMetod({db:'db_project',attr:''});
-        this.task = await super.getMetod({db:'db_task',attr:''});
-        this.log = await super.getMetod({db:'db_log',attr:''});
-        this.userList = await super.getMetod({db:'db_user',attr:''});
+        const [
+            project,
+            task,
+            log,
+            userList
+        ] = await Promise.all([
+            super.getMetod({ db: 'db_project', attr: '' }),
+            super.getMetod({ db: 'db_task', attr: '' }),
+            super.getMetod({ db: 'db_log', attr: '' }),
+            super.getMetod({ db: 'db_user', attr: '' })
+        ]);
+
+        this.project = project;
+        this.task = task;
+        this.log = log;
+        this.userList = userList;
+
+        this.doneLoadData = true;
     }
     displayProject(){
         let card = this.el.querySelector("#card-project");
@@ -111,6 +125,7 @@ class dashboard extends mainScript {
         super.loading();
 
         await this.LoadData();
+
         this.displayProject();
         this.displayDeadline();
         this.taskSelesai();

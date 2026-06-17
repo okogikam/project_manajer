@@ -37,5 +37,10 @@
   
   <div id="content"></div>
   <script>console.log('start');</script>
+  <script>
+    window.onload = async () => {
+      loadPage(document.querySelectorAll('.menu button')[0], 'dashboard');
+    }
+  </script>
 </body>
 </html>

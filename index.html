@@ -10,7 +10,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./disk/css/main_style.css">
   <script src="./disk/js/main_script.js"></script>
-  <script src="./disk/js/config.js"></script>
+  <!-- <script src="./disk/js/config.js"></script> -->
 </head>
 <body>
 
@@ -31,15 +31,61 @@
     </nav>
 
   </aside>
-  <aside class="loading">
+  <aside class="loading" style="display: flex;">
     <img src="./disk/img/loading.gif" alt="">
   </aside>
   
   <div id="content"></div>
+  <!-- script page  -->
+  <script src="./disk/js/dashboard/dashboard.js"></script>
+  <script src="./disk/js/project/project.js"></script>
+  <script src="./disk/js/task/task.js"></script>
+  <script src="./disk/js/dokument/dokument.js"></script>
+  <script src="./disk/js/activity/activity.js"></script>
+  <script src="./disk/js/setting/setting.js"></script>
   <script>console.log('start');</script>
   <script>
+    async function  starUP(){
+      const mc = new mainScript();
+      await mc.init();
+      const menu = {
+        dashboard: new dashboard(mc),
+        project: new project(mc),
+        task: new task(mc),
+        dokument: new dokument(mc),
+        activity: new activity(mc),
+        setting: new setting(mc)
+      }
+      return menu;
+    }
     window.onload = async () => {
+      window.menu = await starUP();
+      // console.log(menu.dashboard.project);
       loadPage(document.querySelectorAll('.menu button')[0], 'dashboard');
+    }
+    async function loadPage(btnKlick, page) {
+        const content = document.getElementById("content");
+        const btnMenu = document.querySelectorAll(".menu button");
+        // const mc = new MainScript();
+
+        btnMenu.forEach(btn => btn.classList.remove("active"));
+        btnKlick.classList.add("active");
+
+        content.style.opacity = 0;
+
+        setTimeout(async () => {
+            const response = await fetch(`./pages/${page}/index.html`);
+            const html = await response.text();
+
+            content.innerHTML = html;
+            content.style.opacity = 1;
+
+            // await loadScriptOnce(`./disk/js/${page}/${page}.js`);
+            if (typeof window.menu[`${page}`].init() === "function") {
+                window.menu[`${page}`].init();
+            }
+
+        }, 200);
     }
   </script>
 </body>

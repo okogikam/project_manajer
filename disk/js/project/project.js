@@ -1,6 +1,7 @@
 class project extends mainScript {
-    constructor() {
+    constructor(mc) {
         super();
+        this.project = mc.project;
     }
     async LoadData(){
         let response = await super.getMetod({ db: 'db_project', attr: '' });
@@ -42,7 +43,7 @@ class project extends mainScript {
     }
     async init(){
         super.loading();
-        await this.LoadData();
+        // await this.LoadData();
         this.showProject();
         super.loadDone();
     }

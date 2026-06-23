@@ -1,6 +1,10 @@
 class dashboard extends mainScript {
-    constructor() {
+    constructor(mc) {
         super();
+        this.project = mc.project;
+        this.task = mc.task;
+        this.log = mc.log;
+        this.userList = mc.userList;
     }
     async LoadData(){
         const [
@@ -124,7 +128,7 @@ class dashboard extends mainScript {
     async init(){
         super.loading();
 
-        await this.LoadData();
+        // await this.LoadData();
 
         this.displayProject();
         this.displayDeadline();

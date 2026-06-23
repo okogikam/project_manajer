@@ -16,5 +16,25 @@ class mainScript {
         let loading = this.el.querySelector(".loading");
         loading.style.display = "none";
     }
+    async init(){
+         const [
+            project,
+            task,
+            log,
+            userList
+        ] = await Promise.all([
+            this.getMetod({ db: 'db_project', attr: '' }),
+            this.getMetod({ db: 'db_task', attr: '' }),
+            this.getMetod({ db: 'db_log', attr: '' }),
+            this.getMetod({ db: 'db_user', attr: '' })
+        ]);
+
+        this.project = project;
+        this.task = task;
+        this.log = log;
+        this.userList = userList;
+
+        this.doneLoadData = true;        
+    }
 }
 

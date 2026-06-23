@@ -1,0 +1,2 @@
+class activity extends mainScript {
+}
